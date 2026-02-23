@@ -1,7 +1,10 @@
 body{background: linear-gradient(to top, #dfe9f3 0%, white 100%);
     background-repeat: no-repeat;
     background-attachment: fixed;
+    font-family: "Oswald", sans-serif;
+ 
 }
+
 .forecast-app{
     background-color:white ;
     max-width: 500px;
@@ -9,5 +12,6 @@ body{background: linear-gradient(to top, #dfe9f3 0%, white 100%);
     padding: 30px;
     border-radius: 15px;
     box-shadow:#F5F1FE ;
+
 
 }
