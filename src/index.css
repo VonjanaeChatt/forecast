@@ -24,12 +24,12 @@ header{
    border-bottom: 1px solid #F5F1FE;
     padding: 0 0 20px 0;
 }
-.search-input{
+.input{
     background-color: #F5F1FE;
     border: none;
     border-radius: 5px;
     width: 60%;
-    padding: 30px;
+    padding: 25px;
     font-size: 20px;
 }
 .search-button{
@@ -38,7 +38,7 @@ header{
     border-radius: 5px;
     width: 170px;
     font-size:20px;
-    padding: 30px;
+    padding: 25px;
     font-size: 20px;
     color:white;
     font-weight: bolder;
@@ -63,6 +63,9 @@ justify-content: space-between;
 .location-temp{
     font-size: 68px;
     font-weight: bold;
+}
+.temp-icon{
+   font-size: 30px; 
 }
 
 footer{
