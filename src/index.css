@@ -4,6 +4,9 @@ body{background: linear-gradient(to top, #dfe9f3 0%, white 100%);
     font-family: "Oswald", sans-serif;
  
 }
+a{
+    color:#a5bdfd;
+}
 
 .forecast-app{
     background-color:white ;
@@ -14,4 +17,58 @@ body{background: linear-gradient(to top, #dfe9f3 0%, white 100%);
     box-shadow:#F5F1FE ;
 
 
+
+}
+header{
+ 
+   border-bottom: 1px solid #F5F1FE;
+    padding: 0 0 20px 0;
+}
+.search-input{
+    background-color: #F5F1FE;
+    border: none;
+    border-radius: 5px;
+    width: 60%;
+    padding: 30px;
+    font-size: 20px;
+}
+.search-button{
+    background-color:#a5bdfd;
+    border-color: rgb(192, 174, 237);
+    border-radius: 5px;
+    width: 170px;
+    font-size:20px;
+    padding: 30px;
+    font-size: 20px;
+    color:white;
+    font-weight: bolder;
+}
+main{
+    padding: 60px 0;
+}
+.forecast-data{
+display:flex;
+justify-content: space-between;
+}
+.location{
+  margin:0;
+  font-size: 20px;
+  line-height:48px;  
+}
+.location-details{
+    font-size:15px;
+    line-height: 20px;
+    color:#a5bdfd
+}
+.location-temp{
+    font-size: 68px;
+    font-weight: bold;
+}
+
+footer{
+    border-top:1px solid #F5F1FE;
+    padding: 30px 0 0 0 ;
+    text-align: center;
+    font-size: 10px;
+    color:#838589;
 }
