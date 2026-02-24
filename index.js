@@ -51,9 +51,7 @@ function routeSearch(event) {
     searchLocation(city);
 }
 
-// Add event listener for the search form
 let searchForm = document.querySelector("#search-input");
 searchForm.addEventListener("submit", routeSearch);
 
-// Load default city on page load
 searchLocation("Paris");
