@@ -1,14 +1,38 @@
 function updateTemp(response) {
     let tempElement = document.querySelector("#location-temp");
     let locationElement = document.querySelector("#location");
+    let descriptionElement = document.querySelector("#description");
+ let humidityElement = document.querySelector("#humidity");
+let speedElement = document.querySelector("#wind-speed");
+let timeElement = document.querySelector("#time");
+let date = new Date(response.data.time * 1000);
+
 
     let locationTemp = response.data.temperature.current;
     let correctCity = response.data.city;
 
-    // Update city from API response
+    // Update city 
     locationElement.innerHTML = `<h1>${correctCity}</h1>`;
+    descriptionElement.innerHTML = response.data.condition.description;
+    timeElement.innerHTML = formatDate(date);
+    humidityElement.innerHTML = `${response.data.temperature.humidity}%`;
+    speedElement.innerHTML = `${response.data.wind.speed}mph`;
     tempElement.innerHTML = `${Math.round(locationTemp)}°F`;
 }
+function formatDate(date){
+    
+    let hours = date.getHours();
+    let minutes = date.getMinutes();
+
+let days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+
+
+let day = days[ date.getDay()];
+
+
+    return `${day} ${hours}:${minutes}`;
+}
+
 
 function searchLocation(city) {
     let apiKey = "863ce73t1a62a502d4b0fda01094bo6c";
@@ -29,5 +53,5 @@ function routeSearch(event) {
 let searchForm = document.querySelector("#search-input");
 searchForm.addEventListener("submit", routeSearch);
 
-// Load default city on page load
+// Load default
 searchLocation("Paris");
