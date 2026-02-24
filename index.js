@@ -50,8 +50,35 @@ function routeSearch(event) {
     let city = inputElement.value;
     searchLocation(city);
 }
+function dislpayForecast(){
+let forecastElement = document.querySelector("#forecast");
+
+let days = ['mon','tues','wed','thur','fri'];
+
+let forecastHTML = "";
+
+
+days.forEach(function(day){
+forecastHTML = forecastHTML + 
+`
+
+    <div class="weather-forecast-day">
+        <div class="weather-forecast-date">${day}</div>
+        <div class="weather-forecast-icon">🌤️</div>
+        <div class="weather-forecast-temps">
+            <strong class="weather-forecast-temp">15°</strong>
+            <div class="weather-forecast-temp">13°</div>
+        </div>
+    </div>
+`;
+});
+
+forecastElement.innerHTML = forecastHTML;
+
+}
 
 let searchForm = document.querySelector("#search-input");
 searchForm.addEventListener("submit", routeSearch);
 
 searchLocation("Paris");
+dislpayForecast();
