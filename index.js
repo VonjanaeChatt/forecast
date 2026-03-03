@@ -11,12 +11,13 @@ function updateTemp(response) {
 
     let locationTemp = response.data.temperature.current;
     let correctCity = response.data.city;
+    let country = response.data.country;
     let description = response.data.condition.description;
     let humidity = response.data.temperature.humidity;
     let windSpeed = response.data.wind.speed;
     let iconUrl = response.data.condition.icon_url;
 
-    locationElement.innerHTML = `<h1>${correctCity}</h1>`;
+    locationElement.innerHTML = `<h1>${correctCity}, ${country}</h1>`;
     descriptionElement.innerHTML = description;
     humidityElement.innerHTML = `${humidity}%`;
     speedElement.innerHTML = `${windSpeed} mph`;
@@ -28,7 +29,7 @@ function updateTemp(response) {
     let now = new Date();
     timeElement.innerHTML = formatDate(now);
 
-    getForecast(correctCity);
+    getForecast(`${correctCity}, ${country}`);
 }
 
 function formatDate(date) {
@@ -59,20 +60,32 @@ function formatDay(timestamp) {
 }
 
 function searchLocation(city) {
-    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=imperial`;
-    axios.get(apiUrl).then(updateTemp);
+    let formattedCity = encodeURIComponent(city);
+    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${formattedCity}&key=${apiKey}&units=imperial`;
+
+    axios.get(apiUrl)
+        .then(updateTemp)
+        .catch(function () {
+            alert("City not found. Please enter City, State or City, Country.");
+        });
 }
 
 function routeSearch(event) {
     event.preventDefault();
     let inputElement = document.querySelector("#input");
-    let city = inputElement.value;
-    searchLocation(city);
+    let city = inputElement.value.trim();
+
+    if (city.length > 0) {
+        searchLocation(city);
+    }
 }
 
 function getForecast(city) {
-    let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=imperial`;
-    axios.get(apiUrl).then(displayForecast);
+    let formattedCity = encodeURIComponent(city);
+    let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${formattedCity}&key=${apiKey}&units=imperial`;
+
+    axios.get(apiUrl)
+        .then(displayForecast);
 }
 
 function displayForecast(response) {
@@ -109,5 +122,4 @@ function displayForecast(response) {
 let searchForm = document.querySelector("#search-input");
 searchForm.addEventListener("submit", routeSearch);
 
-searchLocation("Paris");
-
+searchLocation("Paris, FR");
